@@ -67,7 +67,7 @@ public class BookService {
         }
         if (bookDTO.getAuthor() != null) {
 
-            AuthorDTO updatedAuthor = authorIntegrationService.findOrCreateAuthor(bookDTO.getAuthor());
+            AuthorDTO updatedAuthor = authorIntegrationService.getOrCreateAuthor(bookDTO.getAuthor());
             existingBook.setAuthorId(updatedAuthor.getId());
         }
 

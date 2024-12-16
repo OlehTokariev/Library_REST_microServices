@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class AuthorIntegrationService {
 
     private final AuthorClient authorClient;
-    public AuthorDTO findOrCreateAuthor(AuthorDTO authorDTO) {
+    public AuthorDTO getOrCreateAuthor(AuthorDTO authorDTO) {
         if (authorDTO.getId() != null) {
             return authorClient.getAuthorById(authorDTO.getId());
         }
@@ -22,11 +22,5 @@ public class AuthorIntegrationService {
             throw new IllegalArgumentException("Author ID cannot be null");
         }
         return authorClient.getAuthorById(id);
-    }
-    public AuthorDTO getOrCreateAuthor(AuthorDTO authorDTO) {
-        if (authorDTO.getId() != null) {
-            return getAuthorById(authorDTO.getId());
-        }
-        return authorClient.createAuthor(authorDTO);
     }
 }
