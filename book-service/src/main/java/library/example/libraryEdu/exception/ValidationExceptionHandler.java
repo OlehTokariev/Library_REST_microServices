@@ -19,4 +19,12 @@ public class ValidationExceptionHandler {
                 errors.put(error.getField(), error.getDefaultMessage()));
         return errors;
     }
+
+    @ExceptionHandler(AuthorServiceUnavailableException.class)
+    @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
+    public Map<String, String> handleAuthorServiceUnavailableException(AuthorServiceUnavailableException ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error", ex.getMessage());
+        return error;
+    }
 }
